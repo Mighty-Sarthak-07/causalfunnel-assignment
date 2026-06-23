@@ -70,7 +70,7 @@ export default function DashboardOverview() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-7xl">
+    <div className="flex flex-col gap-8 w-full max-w-7xl animate-fade-in">
       {/* Title Block */}
       <div className="flex items-center justify-between">
         <div>
@@ -82,7 +82,7 @@ export default function DashboardOverview() {
         <button
           onClick={fetchDashboardData}
           disabled={loading}
-          className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] rounded-lg text-xs font-semibold shadow-sm transition-all disabled:opacity-50 cursor-pointer"
+          className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] rounded-lg text-xs font-semibold shadow-sm transition-all disabled:opacity-50 active:scale-95 duration-100 cursor-pointer"
         >
           <RotateCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
           Refresh
@@ -92,7 +92,7 @@ export default function DashboardOverview() {
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Total Sessions */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm">
+        <div className="opacity-0 animate-fade-in stagger-1 bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm hover:scale-[1.02] transition-transform duration-200">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider">
               Total Sessions
@@ -108,7 +108,7 @@ export default function DashboardOverview() {
         </div>
 
         {/* Total Events */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm">
+        <div className="opacity-0 animate-fade-in stagger-2 bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm hover:scale-[1.02] transition-transform duration-200">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider">
               Total Events
@@ -124,7 +124,7 @@ export default function DashboardOverview() {
         </div>
 
         {/* Total Clicks */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm">
+        <div className="opacity-0 animate-fade-in stagger-3 bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm hover:scale-[1.02] transition-transform duration-200">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider">
               Total Clicks
@@ -140,7 +140,7 @@ export default function DashboardOverview() {
         </div>
 
         {/* Total Page Views */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm">
+        <div className="opacity-0 animate-fade-in stagger-4 bg-white border border-[#E5E7EB] rounded-2xl p-6 relative overflow-hidden shadow-sm hover:scale-[1.02] transition-transform duration-200">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider">
               Page Views
@@ -157,7 +157,7 @@ export default function DashboardOverview() {
       </div>
 
       {/* Recent Activity Table */}
-      <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm">
+      <div className="opacity-0 animate-fade-in stagger-4 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm">
         <h3 className="text-base font-bold text-[#111827] mb-4 flex items-center gap-2">
           <Clock className="h-4.5 w-4.5 text-[#2563EB]" /> Recent Events Stream
         </h3>
@@ -181,7 +181,7 @@ export default function DashboardOverview() {
               </thead>
               <tbody className="divide-y divide-[#E5E7EB] text-[#111827]">
                 {events.map((ev) => (
-                  <tr key={ev._id} className="hover:bg-gray-50/50 transition-all">
+                  <tr key={ev._id} className="hover:bg-gray-50/50 transition-all duration-150">
                     <td className="py-3 px-4">
                       <span
                         className={`inline-flex px-2 py-0.5 rounded text-[10px] font-semibold border ${

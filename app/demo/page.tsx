@@ -48,16 +48,16 @@ export default function DemoPage() {
           </div>
 
           <nav className="hidden md:flex items-center gap-6 text-sm text-[#6B7280]">
-            <button className="hover:text-[#111827] transition-colors cursor-pointer">
+            <button className="hover:text-[#111827] transition-colors cursor-pointer active:scale-95 duration-100">
               Products
             </button>
-            <button className="hover:text-[#111827] transition-colors cursor-pointer">
+            <button className="hover:text-[#111827] transition-colors cursor-pointer active:scale-95 duration-100">
               Features
             </button>
-            <button className="hover:text-[#111827] transition-colors cursor-pointer">
+            <button className="hover:text-[#111827] transition-colors cursor-pointer active:scale-95 duration-100">
               Pricing
             </button>
-            <button className="hover:text-[#111827] transition-colors cursor-pointer">
+            <button className="hover:text-[#111827] transition-colors cursor-pointer active:scale-95 duration-100">
               FAQ
             </button>
           </nav>
@@ -65,13 +65,13 @@ export default function DemoPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard"
-              className="text-xs flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all font-semibold shadow-sm"
+              className="text-xs flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all font-semibold shadow-sm active:scale-95 duration-100"
             >
               Go to Dashboard <ExternalLink className="h-3 w-3" />
             </Link>
             <Link
               href="/"
-              className="text-xs text-[#6B7280] hover:text-[#111827] px-2 py-1.5 transition-all"
+              className="text-xs text-[#6B7280] hover:text-[#111827] px-2 py-1.5 transition-all active:scale-95 duration-100"
             >
               Back
             </Link>
@@ -82,9 +82,9 @@ export default function DemoPage() {
       {/* Main Container */}
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
         {/* Top Info Banner */}
-        <div className="mb-10 text-center bg-blue-50/50 border border-blue-100 rounded-2xl p-6">
+        <div className="mb-10 text-center bg-blue-50/50 border border-blue-100 rounded-2xl p-6 transition-all hover:border-blue-200">
           <h1 className="text-xl font-bold text-[#111827] mb-2 flex items-center justify-center gap-2">
-            <Sparkles className="h-5 w-5 text-amber-505" />
+            <Sparkles className="h-5 w-5 text-amber-500" />
             Event Generator Sandbox
           </h1>
           <p className="text-sm text-[#6B7280] max-w-xl mx-auto">
@@ -95,7 +95,7 @@ export default function DemoPage() {
 
         {/* Hero Section */}
         <section className="text-center py-10 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#E5E7EB] rounded-full text-xs text-[#2563EB] font-semibold mb-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#E5E7EB] rounded-full text-xs text-[#2563EB] font-semibold mb-4 transition-transform hover:scale-105 duration-200">
             Unleash 10x Productivity
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#111827] tracking-tight mb-6">
@@ -109,11 +109,11 @@ export default function DemoPage() {
           <div className="flex justify-center gap-4">
             <button
               onClick={() => setCounter((c) => c + 1)}
-              className="px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold rounded-xl shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+              className="px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold rounded-xl shadow-sm transition-all active:scale-[0.96] duration-100 cursor-pointer"
             >
               Buy Now (Counter: {counter})
             </button>
-            <button className="px-6 py-3 bg-white hover:bg-gray-50 border border-[#E5E7EB] text-[#111827] font-semibold rounded-xl transition-all shadow-sm cursor-pointer">
+            <button className="px-6 py-3 bg-white hover:bg-gray-50 border border-[#E5E7EB] text-[#111827] font-semibold rounded-xl transition-all shadow-sm active:scale-[0.96] duration-100 cursor-pointer">
               Learn More
             </button>
           </div>
@@ -126,7 +126,7 @@ export default function DemoPage() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm">
+            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm hover:scale-[1.01] duration-250">
               <div>
                 <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                   <TrendingUp className="h-5 w-5 text-[#2563EB]" />
@@ -138,14 +138,14 @@ export default function DemoPage() {
               </div>
               <div className="flex items-center justify-between mt-auto">
                 <span className="text-sm font-bold text-[#111827]">$49/mo</span>
-                <button className="text-xs font-semibold px-3 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all active:scale-95 cursor-pointer shadow-sm">
+                <button className="text-xs font-semibold px-3 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all active:scale-95 duration-100 cursor-pointer shadow-sm">
                   Add to Cart
                 </button>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm">
+            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm hover:scale-[1.01] duration-250">
               <div>
                 <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                   <Sparkles className="h-5 w-5 text-[#2563EB]" />
@@ -157,14 +157,14 @@ export default function DemoPage() {
               </div>
               <div className="flex items-center justify-between mt-auto">
                 <span className="text-sm font-bold text-[#111827]">$99/mo</span>
-                <button className="text-xs font-semibold px-3 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all active:scale-95 cursor-pointer shadow-sm">
+                <button className="text-xs font-semibold px-3 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg transition-all active:scale-95 duration-100 cursor-pointer shadow-sm">
                   Add to Cart
                 </button>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm">
+            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-md transition-all flex flex-col justify-between shadow-sm hover:scale-[1.01] duration-250">
               <div>
                 <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                   <Heart className="h-5 w-5 text-[#2563EB]" />
@@ -176,7 +176,7 @@ export default function DemoPage() {
               </div>
               <div className="flex items-center justify-between mt-auto">
                 <span className="text-sm font-bold text-[#111827]">Free</span>
-                <button className="text-xs font-semibold px-3 py-2 bg-gray-50 hover:bg-gray-100 text-[#111827] rounded-lg border border-[#E5E7EB] transition-all active:scale-95 cursor-pointer shadow-sm">
+                <button className="text-xs font-semibold px-3 py-2 bg-gray-50 hover:bg-gray-100 text-[#111827] rounded-lg border border-[#E5E7EB] transition-all active:scale-95 duration-100 cursor-pointer shadow-sm">
                   Subscribe
                 </button>
               </div>
@@ -191,7 +191,7 @@ export default function DemoPage() {
             Choose the plan that matches your project scale.
           </p>
           <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-8 relative flex flex-col justify-between shadow-sm">
+            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-8 relative flex flex-col justify-between shadow-sm transition-all hover:scale-[1.01] duration-200">
               <div>
                 <h4 className="font-bold text-[#111827] text-lg mb-1">Developer Plan</h4>
                 <p className="text-xs text-[#6B7280] mb-6">Best for testing and personal side projects.</p>
@@ -199,12 +199,12 @@ export default function DemoPage() {
                   $0 <span className="text-xs font-normal text-[#6B7280]">/ forever</span>
                 </div>
               </div>
-              <button className="w-full py-3 bg-gray-50 hover:bg-gray-100 border border-[#E5E7EB] text-[#111827] rounded-xl font-semibold text-sm transition-all cursor-pointer">
+              <button className="w-full py-3 bg-gray-50 hover:bg-gray-100 border border-[#E5E7EB] text-[#111827] rounded-xl font-semibold text-sm transition-all active:scale-95 duration-100 cursor-pointer">
                 Choose Starter
               </button>
             </div>
 
-            <div className="bg-white border border-[#2563EB] rounded-2xl p-8 relative flex flex-col justify-between shadow-md">
+            <div className="bg-white border border-[#2563EB] rounded-2xl p-8 relative flex flex-col justify-between shadow-md transition-all hover:scale-[1.01] duration-200">
               <div className="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-blue-50 text-[#2563EB] border border-blue-200 text-[10px] font-bold uppercase tracking-wider">
                 Popular
               </div>
@@ -215,7 +215,7 @@ export default function DemoPage() {
                   $89 <span className="text-xs font-normal text-[#6B7280]">/ month</span>
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl font-semibold text-sm shadow-sm transition-all cursor-pointer">
+              <button className="w-full py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl font-semibold text-sm shadow-sm transition-all active:scale-95 duration-100 cursor-pointer">
                 Choose Pro
               </button>
             </div>
@@ -232,15 +232,18 @@ export default function DemoPage() {
           </div>
           <span className="text-[10px] text-[#6B7280]">SDK Status: Active</span>
         </div>
-        <div className="flex flex-col gap-1.5 min-h-[96px]">
+        <div className="flex flex-col gap-1.5 min-h-[96px] overflow-hidden">
           {logs.length === 0 ? (
-            <div className="flex-1 flex flex-col items-center justify-center text-[#6B7280] text-xs text-center py-6">
+            <div className="flex-1 flex flex-col items-center justify-center text-[#6B7280] text-xs text-center py-6 animate-pulse">
               <MousePointer className="h-5 w-5 mb-1 text-[#2563EB]" />
               <span>Click anywhere to see tracker logs.</span>
             </div>
           ) : (
             logs.map((log) => (
-              <div key={log.id} className="text-[10px] font-mono flex items-start gap-1">
+              <div
+                key={log.id}
+                className="opacity-0 animate-slide-in-right text-[10px] font-mono flex items-start gap-1"
+              >
                 <span className="text-[#2563EB] shrink-0">➔</span>
                 <span className="text-[#6B7280] break-all">{log.details}</span>
               </div>

@@ -90,7 +90,12 @@ export default function Heatmap({ clicks, loading }: HeatmapProps) {
               onMouseEnter={() => setHoveredDot({ x: click.x, y: click.y, index })}
               onMouseLeave={() => setHoveredDot(null)}
             >
-              <div className="w-3.5 h-3.5 bg-[#2563EB] rounded-full shadow border border-white transition-transform duration-250 hover:scale-125" />
+              <div className="relative">
+                {/* Pulsating Radar */}
+                <div className="absolute -inset-1.5 bg-[#2563EB]/35 rounded-full animate-ping pointer-events-none" />
+                {/* Main Marker */}
+                <div className="w-3.5 h-3.5 bg-[#2563EB] rounded-full shadow border border-white transition-transform duration-200 hover:scale-125 relative z-10" />
+              </div>
 
               {hoveredDot?.index === index && (
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-32 bg-white border border-[#E5E7EB] text-[10px] text-[#111827] p-2.5 rounded-lg shadow-xl font-mono flex flex-col gap-1 pointer-events-none z-50">

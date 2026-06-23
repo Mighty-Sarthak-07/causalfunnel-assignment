@@ -117,7 +117,7 @@ export default function SessionsPage() {
           </h3>
 
           {selectedSessionId ? (
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 animate-slide-in-right" key={selectedSessionId}>
               <div className="mb-4 text-[10px] font-mono text-[#6B7280] break-all bg-[#FAFAF9] px-3 py-1.5 rounded border border-[#E5E7EB]">
                 Session ID: {selectedSessionId}
               </div>
