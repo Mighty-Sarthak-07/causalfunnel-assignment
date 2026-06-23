@@ -17,7 +17,7 @@ interface EventTimelineProps {
 export default function EventTimeline({ events, loading }: EventTimelineProps) {
   if (loading) {
     return (
-      <div className="flex justify-center items-center py-20 text-xs text-[#6B7280]">
+      <div className="flex justify-center items-center py-20 text-xs text-[#6B7280] dark:text-slate-400">
         Loading journey events...
       </div>
     );
@@ -25,15 +25,15 @@ export default function EventTimeline({ events, loading }: EventTimelineProps) {
 
   if (events.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 px-4 text-center border border-dashed border-[#E5E7EB] rounded-2xl bg-[#FAFAF9]">
-        <Clock className="h-8 w-8 text-gray-300 mb-3" />
-        <span className="text-[#6B7280] font-semibold text-sm">No events recorded</span>
+      <div className="flex flex-col items-center justify-center py-16 px-4 text-center border border-dashed border-[#E5E7EB] dark:border-slate-800 rounded-2xl bg-[#FAFAF9] dark:bg-slate-950 transition-colors duration-200">
+        <Clock className="h-8 w-8 text-gray-300 dark:text-slate-700 mb-3" />
+        <span className="text-[#6B7280] dark:text-slate-400 font-semibold text-sm">No events recorded</span>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-6 relative pl-6 border-l border-[#E5E7EB] ml-3">
+    <div className="flex flex-col gap-6 relative pl-6 border-l border-[#E5E7EB] dark:border-slate-800 ml-3">
       {events.map((ev, index) => {
         const isClick = ev.event_type === "click";
         const formattedTime = new Date(ev.timestamp).toLocaleTimeString([], {
@@ -48,8 +48,8 @@ export default function EventTimeline({ events, loading }: EventTimelineProps) {
             <div
               className={`absolute -left-[37px] top-0.5 w-6 h-6 rounded-full flex items-center justify-center border transition-all ${
                 isClick
-                  ? "bg-blue-50 border-[#2563EB] text-[#2563EB]"
-                  : "bg-gray-50 border-gray-400 text-[#6B7280]"
+                  ? "bg-blue-50 dark:bg-blue-950/40 border-[#2563EB] dark:border-blue-500 text-[#2563EB] dark:text-blue-400"
+                  : "bg-gray-50 dark:bg-slate-800 border-gray-400 dark:border-slate-600 text-[#6B7280] dark:text-slate-400"
               }`}
             >
               {isClick ? (
@@ -60,25 +60,25 @@ export default function EventTimeline({ events, loading }: EventTimelineProps) {
             </div>
 
             {/* Content Card */}
-            <div className="bg-[#FAFAF9] border border-[#E5E7EB] rounded-xl p-4 transition-all hover:border-gray-300">
+            <div className="bg-[#FAFAF9] dark:bg-slate-950 border border-[#E5E7EB] dark:border-slate-800 rounded-xl p-4 transition-all hover:border-gray-300 dark:hover:border-slate-700">
               <div className="flex items-center justify-between gap-4 mb-2">
                 <span
                   className={`text-[10px] font-bold uppercase tracking-wider ${
-                    isClick ? "text-[#2563EB]" : "text-[#6B7280]"
+                    isClick ? "text-[#2563EB] dark:text-blue-400" : "text-[#6B7280] dark:text-slate-400"
                   }`}
                 >
                   {isClick ? "Click Interaction" : "Page Visited"}
                 </span>
-                <span className="text-[10px] text-[#6B7280] font-mono flex items-center gap-1">
+                <span className="text-[10px] text-[#6B7280] dark:text-slate-400 font-mono flex items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {formattedTime}
                 </span>
               </div>
-              <p className="text-sm font-semibold text-[#111827] truncate">{ev.page_url}</p>
+              <p className="text-sm font-semibold text-[#111827] dark:text-slate-100 truncate">{ev.page_url}</p>
               {isClick && ev.x !== undefined && (
-                <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-[10px] font-mono text-[#6B7280]">
+                <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 text-[10px] font-mono text-[#6B7280] dark:text-slate-400">
                   <span>Coordinates:</span>
-                  <span className="text-[#2563EB]">
+                  <span className="text-[#2563EB] dark:text-blue-450 dark:text-blue-400">
                     x: {ev.x}, y: {ev.y}
                   </span>
                 </div>

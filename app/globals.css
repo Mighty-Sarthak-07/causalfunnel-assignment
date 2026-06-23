@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   body {
     background-color: #FAFAF9;
     color: #111827;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .dark body {
+    background-color: #0B0F19;
+    color: #F9FAFB;
   }
 }
 
@@ -16,13 +24,25 @@
   background: #FAFAF9;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #E5E7EB;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #1F2937;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #D1D5DB;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151;
 }
 
 @keyframes fadeIn {

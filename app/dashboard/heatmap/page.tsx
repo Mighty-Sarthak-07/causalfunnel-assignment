@@ -35,21 +35,21 @@ export default function HeatmapPage() {
   }, [selectedPage]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl">
+    <div className="flex flex-col gap-6 w-full max-w-7xl animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#111827]">Click Heatmap</h2>
-          <p className="text-xs text-[#6B7280]">
+          <h2 className="text-2xl font-extrabold text-[#111827] dark:text-white">Click Heatmap</h2>
+          <p className="text-xs text-[#6B7280] dark:text-slate-400">
             Viewport coordinate visualizer of user click coordinates.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-[#6B7280]">Active Path:</span>
+          <span className="text-xs font-semibold text-[#6B7280] dark:text-slate-400">Active Path:</span>
           <select
             value={selectedPage}
             onChange={(e) => setSelectedPage(e.target.value)}
-            className="text-xs bg-white border border-[#E5E7EB] text-[#111827] px-3 py-1.5 rounded-lg font-semibold hover:border-gray-300 focus:outline-none cursor-pointer shadow-sm"
+            className="text-xs bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 text-[#111827] dark:text-white px-3 py-1.5 rounded-lg font-semibold hover:border-gray-300 dark:hover:border-slate-700 focus:outline-none cursor-pointer shadow-sm transition-colors duration-200"
           >
             <option value="/demo">/demo</option>
             <option value="/">/ (Landing Page)</option>
@@ -58,7 +58,7 @@ export default function HeatmapPage() {
         </div>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors duration-200">
         <Heatmap clicks={clicks} loading={loading} />
       </div>
     </div>

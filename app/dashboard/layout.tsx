@@ -12,6 +12,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function DashboardLayout({
   children,
@@ -28,18 +29,18 @@ export default function DashboardLayout({
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#FAFAF9] text-[#111827] font-sans">
+    <div className="flex h-screen overflow-hidden bg-[#FAFAF9] dark:bg-slate-950 text-[#111827] dark:text-slate-100 font-sans transition-colors duration-200">
       {/* Mobile Sidebar Overlay Backdrop */}
       {isSidebarOpen && (
         <div
           onClick={() => setIsSidebarOpen(false)}
-          className="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 md:hidden transition-opacity duration-300"
+          className="fixed inset-0 bg-slate-900/30 dark:bg-slate-950/40 backdrop-blur-xs z-40 md:hidden transition-opacity duration-300"
         />
       )}
 
       {/* Sidebar Navigation */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-[#E5E7EB] bg-white flex flex-col justify-between p-6 transition-transform duration-300 ease-in-out md:static md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-[#E5E7EB] dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between p-6 transition-all duration-300 ease-in-out md:static md:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -50,11 +51,11 @@ export default function DashboardLayout({
               <div className="p-2 bg-[#2563EB] rounded-lg">
                 <Activity className="h-5 w-5 text-white" />
               </div>
-              <span className="font-extrabold text-lg text-[#111827]">CF Analytics</span>
+              <span className="font-extrabold text-lg text-[#111827] dark:text-white">CF Analytics</span>
             </div>
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="p-1 text-[#6B7280] hover:text-[#111827] md:hidden cursor-pointer rounded-lg hover:bg-gray-150"
+              className="p-1 text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white md:hidden cursor-pointer rounded-lg hover:bg-gray-150 dark:hover:bg-slate-800"
             >
               <X className="h-5 w-5" />
             </button>
@@ -72,11 +73,11 @@ export default function DashboardLayout({
                   onClick={() => setIsSidebarOpen(false)}
                   className={`flex items-center gap-3 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all ${
                     isActive
-                      ? "bg-blue-50/50 text-[#2563EB]"
-                      : "hover:bg-gray-50 hover:text-[#111827] text-[#6B7280]"
+                      ? "bg-blue-50/50 dark:bg-blue-950/20 text-[#2563EB] dark:text-blue-400"
+                      : "hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-[#111827] dark:hover:text-white text-[#6B7280] dark:text-slate-450 dark:text-slate-450"
                   }`}
                 >
-                  <Icon className={`h-4.5 w-4.5 ${isActive ? "text-[#2563EB]" : "text-[#6B7280]"}`} />
+                  <Icon className={`h-4.5 w-4.5 ${isActive ? "text-[#2563EB] dark:text-blue-400" : "text-[#6B7280] dark:text-slate-450"}`} />
                   {item.label}
                 </Link>
               );
@@ -88,13 +89,13 @@ export default function DashboardLayout({
         <div className="flex flex-col gap-2">
           <Link
             href="/demo"
-            className="flex items-center gap-2 text-xs font-semibold px-4 py-2.5 bg-blue-50 hover:bg-blue-100 text-[#2563EB] rounded-lg border border-blue-100 transition-all text-center justify-center"
+            className="flex items-center gap-2 text-xs font-semibold px-4 py-2.5 bg-blue-50 dark:bg-blue-950/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-[#2563EB] dark:text-blue-400 rounded-lg border border-blue-100 dark:border-blue-900/30 transition-all text-center justify-center"
           >
             Launch Demo Site
           </Link>
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs text-[#6B7280] hover:text-[#111827] px-4 py-2 transition-all justify-center"
+            className="flex items-center gap-2 text-xs text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white px-4 py-2 transition-all justify-center"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Return Home
           </Link>
@@ -104,18 +105,21 @@ export default function DashboardLayout({
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Main Header */}
-        <header className="h-16 border-b border-[#E5E7EB] bg-white px-6 md:px-8 flex items-center justify-between shrink-0">
+        <header className="h-16 border-b border-[#E5E7EB] dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-8 flex items-center justify-between shrink-0 transition-colors duration-200">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="p-2 text-[#6B7280] hover:text-[#111827] md:hidden cursor-pointer rounded-lg hover:bg-gray-50 border border-[#E5E7EB]"
+              className="p-2 text-[#6B7280] dark:text-slate-400 hover:text-[#111827] dark:hover:text-white md:hidden cursor-pointer rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 border border-[#E5E7EB] dark:border-slate-800"
             >
               <Menu className="h-5 w-5" />
             </button>
-            <h1 className="font-bold text-lg text-[#111827]">Analytics Workspace</h1>
+            <h1 className="font-bold text-lg text-[#111827] dark:text-white">Analytics Workspace</h1>
           </div>
-          <div className="text-xs text-[#6B7280] font-mono hidden sm:block">
-            Environment: Localhost
+          <div className="flex items-center gap-4">
+            <div className="text-xs text-[#6B7280] dark:text-slate-400 font-mono hidden sm:block">
+              Environment: Localhost
+            </div>
+            <ThemeToggle />
           </div>
         </header>
 

@@ -39,9 +39,12 @@ export function initTracker() {
   if (typeof window === "undefined") return () => {};
 
   const handleClick = (e: MouseEvent) => {
+    // Normalize x to a standard 1280px screen width
+    const normalizedX = e.clientX - window.innerWidth / 2 + 640;
+
     sendEvent("click", {
-      x: e.clientX,
-      y: e.clientY,
+      x: Math.round(normalizedX),
+      y: e.pageY,
     });
   };
 

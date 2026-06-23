@@ -85,10 +85,10 @@ export default function SessionsPage() {
   }, [selectedSessionId]);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl">
+    <div className="flex flex-col gap-6 w-full max-w-7xl animate-fade-in">
       <div>
-        <h2 className="text-2xl font-extrabold text-[#111827]">Visitor Sessions</h2>
-        <p className="text-xs text-[#6B7280]">
+        <h2 className="text-2xl font-extrabold text-[#111827] dark:text-white">Visitor Sessions</h2>
+        <p className="text-xs text-[#6B7280] dark:text-slate-400">
           List of active tracking sessions and their step-by-step navigation logs.
         </p>
       </div>
@@ -97,7 +97,7 @@ export default function SessionsPage() {
         {/* Session List Table */}
         <div className="lg:col-span-3">
           {loadingSessions ? (
-            <div className="text-center py-20 text-xs text-[#6B7280]">
+            <div className="text-center py-20 text-xs text-[#6B7280] dark:text-slate-400">
               Loading sessions...
             </div>
           ) : (
@@ -110,22 +110,22 @@ export default function SessionsPage() {
         </div>
 
         {/* User Journey Timeline */}
-        <div className="lg:col-span-2 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm min-h-[400px]">
-          <h3 className="text-sm font-bold text-[#111827] mb-6 flex items-center gap-2 border-b border-[#E5E7EB] pb-3">
-            <Clock className="h-4 w-4 text-[#2563EB]" />
+        <div className="lg:col-span-2 bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 rounded-2xl p-6 shadow-sm min-h-[400px] transition-colors duration-200">
+          <h3 className="text-sm font-bold text-[#111827] dark:text-white mb-6 flex items-center gap-2 border-b border-[#E5E7EB] dark:border-slate-800 pb-3">
+            <Clock className="h-4 w-4 text-[#2563EB] dark:text-blue-400" />
             User Journey Timeline
           </h3>
 
           {selectedSessionId ? (
             <div className="flex flex-col gap-1 animate-slide-in-right" key={selectedSessionId}>
-              <div className="mb-4 text-[10px] font-mono text-[#6B7280] break-all bg-[#FAFAF9] px-3 py-1.5 rounded border border-[#E5E7EB]">
+              <div className="mb-4 text-[10px] font-mono text-[#6B7280] dark:text-slate-400 break-all bg-[#FAFAF9] dark:bg-slate-950 px-3 py-1.5 rounded border border-[#E5E7EB] dark:border-slate-800">
                 Session ID: {selectedSessionId}
               </div>
               <EventTimeline events={events} loading={loadingEvents} />
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 text-center text-[#6B7280]">
-              <Users className="h-8 w-8 text-gray-300 mb-2" />
+            <div className="flex flex-col items-center justify-center py-20 text-center text-[#6B7280] dark:text-slate-500">
+              <Users className="h-8 w-8 text-gray-300 dark:text-slate-700 mb-2" />
               <span className="text-xs">Select a session to view its timeline.</span>
             </div>
           )}
