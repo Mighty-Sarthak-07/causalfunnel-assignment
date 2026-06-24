@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -20,7 +20,19 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [environment, setEnvironment] = useState("Localhost");
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const host = window.location.hostname;
+      if (host === "localhost" || host === "127.0.0.1") {
+        setEnvironment("Localhost");
+      } else {
+        setEnvironment(`Production (${host})`);
+      }
+    }
+  }, []);
 
   const navItems = [
     { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
@@ -117,7 +129,7 @@ export default function DashboardLayout({
           </div>
           <div className="flex items-center gap-4">
             <div className="text-xs text-[#6B7280] dark:text-slate-400 font-mono hidden sm:block">
-              Environment: Localhost
+              Environment: {environment}
             </div>
             <ThemeToggle />
           </div>
