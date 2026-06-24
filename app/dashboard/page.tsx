@@ -8,6 +8,7 @@ import {
   Activity,
   RotateCw,
   Clock,
+  Trash2,
 } from "lucide-react";
 
 interface Stats {
@@ -31,6 +32,30 @@ export default function DashboardOverview() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [events, setEvents] = useState<EventLog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [clearing, setClearing] = useState(false);
+
+  const handleClearData = async () => {
+    if (!window.confirm("Are you sure you want to delete all analytics data? This action cannot be undone.")) {
+      return;
+    }
+
+    try {
+      setClearing(true);
+      const res = await fetch("/api/events", {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        await fetchDashboardData();
+      } else {
+        alert("Failed to clear data.");
+      }
+    } catch (error) {
+      console.error("Clear data failed", error);
+      alert("An error occurred while clearing data.");
+    } finally {
+      setClearing(false);
+    }
+  };
 
   const fetchDashboardData = async () => {
     try {
@@ -79,14 +104,24 @@ export default function DashboardOverview() {
             Real-time aggregate data and interaction counts.
           </p>
         </div>
-        <button
-          onClick={fetchDashboardData}
-          disabled={loading}
-          className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 text-[#111827] dark:text-slate-200 rounded-lg text-xs font-semibold shadow-sm transition-all disabled:opacity-50 active:scale-95 duration-100 cursor-pointer"
-        >
-          <RotateCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
-          Refresh
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleClearData}
+            disabled={loading || clearing}
+            className="flex items-center gap-2 px-3 py-1.5 bg-rose-50/50 hover:bg-rose-100/50 dark:bg-rose-950/20 dark:hover:bg-rose-900/30 border border-rose-200 dark:border-rose-900/30 text-rose-600 dark:text-rose-400 rounded-lg text-xs font-semibold shadow-xs transition-all disabled:opacity-50 active:scale-95 duration-100 cursor-pointer"
+          >
+            <Trash2 className={`h-3.5 w-3.5 ${clearing ? "animate-pulse" : ""}`} />
+            {clearing ? "Clearing..." : "Clear Data"}
+          </button>
+          <button
+            onClick={fetchDashboardData}
+            disabled={loading || clearing}
+            className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 text-[#111827] dark:text-slate-200 rounded-lg text-xs font-semibold shadow-sm transition-all disabled:opacity-50 active:scale-95 duration-100 cursor-pointer"
+          >
+            <RotateCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </button>
+        </div>
       </div>
 
       {/* KPI Cards Grid */}

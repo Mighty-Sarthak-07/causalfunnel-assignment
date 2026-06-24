@@ -44,3 +44,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Failed to fetch events" }, { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    await dbConnect();
+    await Event.deleteMany({});
+    return NextResponse.json({ success: true, message: "All events cleared" });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to clear events" }, { status: 500 });
+  }
+}
+

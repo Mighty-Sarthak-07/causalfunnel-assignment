@@ -14,6 +14,7 @@ Follow this sequence to evaluate the application:
    - Check the **Overview** page for total event aggregates and recent live logs.
    - Go to the **Sessions** view, select your active session, and inspect the chronological **User Journey Timeline**.
    - Go to the **Heatmap** page to visualize your click coordinates mapped on a wireframe preview.
+   - Click the **Clear Data** button (top right of the Overview page) and accept the confirmation prompt to reset all metrics and sessions back to zero.
 
 ---
 
@@ -32,7 +33,7 @@ POST /api/events
 MongoDB Atlas (Mongoose Event Model)
    │
    ▼
-Aggregation APIs (/api/stats, /api/sessions, /api/events?limit=20)
+Aggregation & Management APIs (/api/stats, /api/sessions, /api/events, DELETE /api/events)
    │
    ▼
 Dashboard (Overview, Sessions, Heatmap Pages)
@@ -51,6 +52,7 @@ Dashboard (Overview, Sessions, Heatmap Pages)
 - **Journey Timelines**: Chronological step-by-step visualizations of all navigation nodes and click positions for an individual session.
 - **Simplified Coordinate Heatmap**: Position-accurate click dot overlays mapped to wireframe containers with hover coordinates and details.
 - **Responsive Layout**: Dark-themed workspace layout with side navigation and stats indicator widgets.
+- **Data Reset Management**: Purge all metrics, sessions, and events dynamically via a "Clear Data" confirmation button on the dashboard.
 
 ---
 
