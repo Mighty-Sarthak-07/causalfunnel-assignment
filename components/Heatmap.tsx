@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Flame } from "lucide-react";
 
 interface ClickCoord {
@@ -19,6 +19,14 @@ export default function Heatmap({ clicks, loading }: HeatmapProps) {
     y: number;
     index: number;
   } | null>(null);
+
+  const [origin, setOrigin] = useState("https://localhost:3000");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
   if (loading) {
     return (
@@ -52,7 +60,7 @@ export default function Heatmap({ clicks, loading }: HeatmapProps) {
           <span className="w-2.5 h-2.5 rounded-full bg-gray-200 dark:bg-slate-700" />
         </div>
         <div className="bg-white dark:bg-slate-900 border border-[#E5E7EB] dark:border-slate-700 rounded px-3 py-0.5 w-full max-w-xs font-mono text-[10px] text-[#6B7280] dark:text-slate-400 truncate select-none">
-          https://localhost:3000/demo
+          {origin}/demo
         </div>
       </div>
 
